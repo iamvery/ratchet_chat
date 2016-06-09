@@ -12,8 +12,6 @@ config :logger, level: :warn
 # Configure your database
 config :pakex, Pakex.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
   database: "pakex_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
