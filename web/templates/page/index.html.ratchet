@@ -1,0 +1,12 @@
+<form action="/messages" method="post">
+  <input type="hidden" name="_csrf_token" value="<%= get_csrf_token %>">
+  <label>
+    Message
+    <input type="text" name="message[body]">
+  </label>
+  <button type="submit">Add message</button>
+</form>
+
+<ul>
+  <%= render "message.html", data: @data %>
+</ul>
