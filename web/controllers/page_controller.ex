@@ -8,7 +8,19 @@ defmodule Pakex.PageController do
   defp data do
     Pakex.Data.new
     |> Pakex.Data.scope(:message, all_messages)
+    |> Pakex.Data.scope(:new_message_form, message_form)
   end
 
   defp all_messages, do: Pakex.MessageMutator.all
+
+  defp message_form do
+    {
+      %{
+        csrf: [value: get_csrf_token, name: "_csrf_token"],
+        body: [name: "message[body]"],
+        submit: [type: "submit"],
+      },
+      action: "/messages", method: "post"
+    }
+  end
 end
