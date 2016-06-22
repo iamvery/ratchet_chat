@@ -2,7 +2,7 @@ defmodule Pakex.MessageController do
   use Pakex.Web, :controller
 
   def create(conn, %{"message" => message_params}) do
-    Pakex.MessageMutator.create(message_params)
+    Pakex.Messages.create(message_params)
     redirect conn, to: "/"
   end
 end

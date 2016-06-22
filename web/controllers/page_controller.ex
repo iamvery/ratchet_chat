@@ -11,7 +11,7 @@ defmodule Pakex.PageController do
     |> Pakex.Data.scope(:new_message_form, message_form)
   end
 
-  defp all_messages, do: Pakex.MessageMutator.all
+  defp all_messages, do: Pakex.Messages.all
 
   defp message_form do
     {
