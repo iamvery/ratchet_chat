@@ -1,7 +1,7 @@
 defmodule MutationChannel do
   use Phoenix.Channel
 
-  def join("mutations", payload, socket) do
+  def join("mutations", _payload, socket) do
     {:ok, socket}
   end
 end
