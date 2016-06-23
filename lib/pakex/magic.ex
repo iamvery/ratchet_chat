@@ -32,6 +32,7 @@ defmodule Mutation do
         unquote(body)
         rendered = Phoenix.View.render_to_string(@view, @template, data: unquote(data))
         @endpoint.broadcast "mutations", unquote(Atom.to_string(name)), %{target: @prop, view: rendered}
+        # TODO mutation channel should probably be scoped or something...
       end
     end
   end
