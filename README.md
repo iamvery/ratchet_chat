@@ -1,20 +1,13 @@
 # Pakex
 
-To start your Phoenix app:
+Building realtime functionality with server-rendered backend.
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
-  * Install Node.js dependencies with `npm install`
-  * Start Phoenix endpoint with `mix phoenix.server`
+- encapsulate rendering pieces of the view
+- encapsulate data lookup so it's repeatable
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Problems with current design:
 
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
-
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: http://phoenixframework.org/docs/overview
-  * Docs: http://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+The "go render and notify" is invoked when messages are created.
+A better way to think about/do this is to state at some point: render messages with this data and note that the data may change so be ready to do it again.
+Then when messages are created: notify whoever cares that messages changed which would trigger the update.
+This is roughly what Pakyow does.
