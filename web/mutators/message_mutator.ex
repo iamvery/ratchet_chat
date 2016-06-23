@@ -1,5 +1,9 @@
 defmodule Pakex.Messages do
-  use Mutation, prop: :message, endpoint: Pakex.Endpoint, view: Pakex.PageView, template: "message.html"
+  use Mutation,
+    prop: :message,
+    endpoint: Pakex.Endpoint,
+    view: Pakex.PageView,
+    template: "message.html"
 
   query(:all) do
     Message.all
