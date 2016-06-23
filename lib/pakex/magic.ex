@@ -33,10 +33,4 @@ defmodule Mutation do
       end
     end
   end
-
-  defmacro mutations_channel do
-    quote do
-      channel "mutations", MutationChannel
-    end
-  end
 end

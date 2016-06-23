@@ -1,10 +1,9 @@
 defmodule Pakex.UserSocket do
   use Phoenix.Socket
-  import Mutation
 
   ## Channels
   # channel "rooms:*", Pakex.RoomChannel
-  mutations_channel
+  channel "mutations", MutationChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
