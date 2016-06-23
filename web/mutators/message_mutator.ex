@@ -9,7 +9,7 @@ defmodule Pakex.Messages do
     Message.all
   end
 
-  action(:create) do
+  action(:create, data: all) do
     Message.add(params["body"])
   end
 end

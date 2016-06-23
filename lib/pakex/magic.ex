@@ -14,7 +14,7 @@ defmodule Mutation do
       Module.put_attribute(__MODULE__, :view, unquote(opts[:view]))
       Module.put_attribute(__MODULE__, :template, unquote(opts[:template]))
       import Pakex.Data
-      import Mutation, only: [query: 2, action: 2]
+      import Mutation, only: [query: 2, action: 3]
     end
   end
 
@@ -26,11 +26,11 @@ defmodule Mutation do
     end
   end
 
-  defmacro action(name, do: body) do
+  defmacro action(name, [data: data], do: body) do
     quote do
       def unquote(name)(var!(params)) do
         unquote(body)
-        rendered = Phoenix.View.render_to_string(@view, @template, data: all)
+        rendered = Phoenix.View.render_to_string(@view, @template, data: unquote(data))
         @endpoint.broadcast "mutations", unquote(Atom.to_string(name)), %{target: @prop, view: rendered}
       end
     end
