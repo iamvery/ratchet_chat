@@ -6,12 +6,11 @@ defmodule Pakex.PageController do
   end
 
   defp data do
-    Pakex.Data.new
-    |> Pakex.Data.scope(:message, all_messages)
+    messages_data
     |> Pakex.Data.scope(:new_message_form, message_form)
   end
 
-  defp all_messages, do: Pakex.Messages.all
+  defp messages_data, do: Pakex.Messages.all
 
   defp message_form do
     {
